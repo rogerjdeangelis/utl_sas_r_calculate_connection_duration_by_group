@@ -3,25 +3,7 @@ I need to calculate the duration of a connection given time points by user
 
     SAS/R Calculate total connection durration by user
 
-    see
-    https://goo.gl/8yhCCg
-    https://stackoverflow.com/questions/47500186/r-identifying-the-first-and-last-elements-in-a-repeating-set-of-duplicates
-
     I need to calculate the duration of a connection given time points by user
-
-    SOAPBOX ON
-
-     I find SAS to be more readable.
-
-     One of the issues I have is how functions like 'group by' and 'mutate' can
-     change the input data structure and the type of the variables. Having many types
-     and data structures is both a strength and a weakness.  It would be nice if SAS
-     added 128bit floats (to handle bigint and virtual addresses) and longtext(up to 2gb).
-     Some but not all these(redundancies?) dictionaries, tibbles, data.frames, data.tables, matrices and vectors.
-     Also too many types(ie character), missings(subtypes), atomic, character, factor,....
-     More is less.
-
-    SOAPBOX OFF
 
     INPUT
 
@@ -67,6 +49,52 @@ I need to calculate the duration of a connection given time points by user
     OUTPUT
     ======
 
+     WORK.WANTSAS total obs=10
+
+     obs   IMG    TIME    ELAPSEDTIME * long variable name even though SAS V5 transport format
+
+      1     B       5           1
+      2     B       6           2
+      3     B       8           4
+      4     B       9           5
+      5     B      10           6
+      6     B      11           7
+      7     G      12           1
+      8     G      14           3
+      9     G      16           5
+     10     G      21          10
+
+    LINKS
+    =====
+
+    github (this post)
+    https://github.com/rogerjdeangelis/utl_sas_r_calculate_connection_duration_by_group
+
+    github for updated utl_rens macro (fills in missing labels with variable names)
+    https://github.com/rogerjdeangelis/utl_R_sas_v5_xport_with_long_variable_names
+
+    see stackoverflow
+    https://goo.gl/8yhCCg
+    https://stackoverflow.com/questions/47500186/r-identifying-the-first-and-last-elements-in-a-repeating-set-of-duplicates
+
+    Akrun profile
+    https://stackoverflow.com/users/3732271/akrun
+
+
+    SOAPBOX ON
+
+     I find SAS to be more readable.
+
+     One of the issues I have is how functions like 'group by' and 'mutate' can
+     change the input data structure and the type of the variables. Having many types
+     and data structures is both a strength and a weakness.  It would be nice if SAS
+     added 128bit floats (to handle bigint and virtual addresses) and longtext(up to 2gb).
+     Some but not all these(redundancies?) dictionaries, tibbles, data.frames, data.tables, matrices and vectors.
+     Also too many types(ie character), missings(subtypes), atomic, character, factor,....
+     More is less.
+
+    SOAPBOX OFF
+
     *                _                _       _
      _ __ ___   __ _| | _____      __| | __ _| |_ __ _
     | '_ ` _ \ / _` | |/ / _ \    / _` |/ _` | __/ _` |
@@ -86,9 +114,9 @@ I need to calculate the duration of a connection given time points by user
     run;quit;
 
 
-     p to 40 obs from wantsas total obs=10
+     WORK.WANTSAS total obs=10
 
-     bs    IMG    TIME    ELAPSEDTIME * long variable name even though SAS V5 transport format
+     obs   IMG    TIME    ELAPSEDTIME * long variable name even though SAS V5 transport format
 
       1     B       5           1
       2     B       6           2
@@ -202,5 +230,6 @@ I need to calculate the duration of a connection given time points by user
       8     G      14           3
       9     G      16           5
      10     G      21          10
+
 
 
