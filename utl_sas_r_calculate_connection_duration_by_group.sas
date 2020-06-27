@@ -206,7 +206,14 @@ library(Hmisc);
  label(want$ELAPSEDTIME)<-"ELAPSEDTIME";
  write.xport(want,file="d:/xpt/want.xpt",autogen.formats = FALSE);
 ');
-
+ proc datasets lib=work mt=view mt=data;         
+       delete __ren001 want;                          
+ run;quit;                                       
+                                                
+    /* need this if you rerun                       
+      NOTE: Deleting WORK.__REN001 (memtype=DATA).    
+      NOTE: Deleting WORK.WANT (memtype=VIEW).        
+    */                   
 data want_r;
   %utl_rens(xpt.want);
   set want;
